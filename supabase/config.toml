@@ -1,1 +1,10 @@
 project_id = "wngtsuwlampagofxaiqc"
+
+[functions.chotu-chat]
+verify_jwt = false
+
+[functions.prompt-mirror]
+verify_jwt = false
+
+[functions.screen-sage]
+verify_jwt = false

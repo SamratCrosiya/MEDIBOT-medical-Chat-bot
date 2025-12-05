@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/modules", label: "Modules" },
   { href: "/prompt-mirror", label: "PromptMirror" },
+  { href: "/discovery-hub", label: "Discovery" },
   { href: "/chat", label: "AI Chat" },
   { href: "/screen-sage", label: "ScreenSage" },
   { href: "/hire-wise", label: "HireWise" },
