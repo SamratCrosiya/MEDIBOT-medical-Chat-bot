@@ -1,23 +1,28 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Stethoscope, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/modules", label: "Modules" },
-  { href: "/prompt-mirror", label: "PromptMirror" },
-  { href: "/discovery-hub", label: "Discovery" },
-  { href: "/chat", label: "AI Chat" },
-  { href: "/screen-sage", label: "ScreenSage" },
-  { href: "/hire-wise", label: "HireWise" },
+  { href: "/chat", label: "MediBot Chat", protected: true },
   { href: "/about", label: "About" },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, signOut } = useAuth();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/");
+  };
+
+  const filteredLinks = navLinks.filter(link => !link.protected || user);
 
   return (
     <nav className="fixed top-0 w-full z-50 glass-strong">
@@ -26,29 +31,53 @@ export function Navbar() {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2 font-display text-xl md:text-2xl font-black gradient-text"
+            className="flex items-center gap-2 font-display text-xl md:text-2xl font-black"
           >
-            <span className="text-2xl">🤖</span>
-            CHOTU
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald to-cyan flex items-center justify-center">
+              <Stethoscope className="w-5 h-5 text-foreground" />
+            </div>
+            <span className="gradient-text">MediBot</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <ul className="hidden lg:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  to={link.href}
-                  className={cn(
-                    "relative text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors py-2",
-                    "after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-hero after:transition-all hover:after:w-full",
-                    location.pathname === link.href && "text-foreground after:w-full"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="hidden lg:flex items-center gap-6">
+            <ul className="flex items-center gap-6">
+              {filteredLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className={cn(
+                      "relative text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors py-2",
+                      "after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-emerald after:to-cyan after:transition-all hover:after:w-full",
+                      location.pathname === link.href && "text-foreground after:w-full"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Auth Buttons */}
+            {user ? (
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted/50">
+                  <User className="w-4 h-4 text-emerald" />
+                  <span className="text-sm text-muted-foreground">{user.email?.split('@')[0]}</span>
+                </div>
+                <Button variant="ghost" size="sm" onClick={handleSignOut}>
+                  <LogOut className="w-4 h-4 mr-2" />
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <Link to="/auth">
+                <Button className="bg-gradient-to-r from-emerald to-cyan hover:opacity-90">
+                  Get Started
+                </Button>
+              </Link>
+            )}
+          </div>
 
           {/* Mobile Menu Toggle */}
           <Button
@@ -69,7 +98,7 @@ export function Navbar() {
           )}
         >
           <ul className="flex flex-col gap-2">
-            {navLinks.map((link) => (
+            {filteredLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   to={link.href}
@@ -83,6 +112,29 @@ export function Navbar() {
                 </Link>
               </li>
             ))}
+            {user ? (
+              <li>
+                <button
+                  onClick={() => {
+                    handleSignOut();
+                    setIsOpen(false);
+                  }}
+                  className="w-full text-left px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+                >
+                  Sign Out
+                </button>
+              </li>
+            ) : (
+              <li>
+                <Link
+                  to="/auth"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2 rounded-lg bg-gradient-to-r from-emerald to-cyan text-foreground font-semibold text-center"
+                >
+                  Get Started
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
