@@ -7,7 +7,7 @@ const modules = [
     icon: RefreshCw,
     title: "PromptMirror",
     tagline: "One prompt. Many minds.",
-    description: "Compare responses from multiple AI models simultaneously. Get insights from OpenAI, Claude, Gemini, and more — all from a single prompt.",
+    description: "Compare responses from multiple AI models simultaneously. Get insights from GPT, Claude, Gemini, and Mistral — all from a single prompt.",
     features: [
       "Side-by-side AI response comparison",
       "Response diffing and quality scoring",
@@ -20,24 +20,24 @@ const modules = [
   },
   {
     icon: Search,
-    title: "AI Discovery Hub",
-    tagline: "Find the perfect AI for any task.",
-    description: "Explore the latest AI tools, models, and platforms. Get personalized recommendations based on your profession and use cases.",
+    title: "Discovery Hub",
+    tagline: "Explore the AI universe.",
+    description: "Discover and explore the best AI tools across categories. Find the perfect tool for your next project.",
     features: [
-      "Auto-updating AI tool database",
+      "Curated AI tool database",
       "Filter by domain and use case",
-      "Pricing and feature comparisons",
-      "One-click prompt templates",
+      "Feature comparisons",
+      "Direct tool links",
     ],
-    href: "/discovery",
+    href: "/discovery-hub",
     gradient: "from-secondary to-accent",
-    available: false,
+    available: true,
   },
   {
     icon: Monitor,
     title: "ScreenSage",
     tagline: "Your screen's smartest observer.",
-    description: "AI assistant that analyzes your screenshots and provides contextual help, explanations, and suggestions.",
+    description: "AI assistant that analyzes your screenshots, UI designs, and code images with intelligent feedback.",
     features: [
       "Real-time screen analysis",
       "Contextual AI assistance",
@@ -52,12 +52,12 @@ const modules = [
     icon: Target,
     title: "HireWise",
     tagline: "Practice smart. Interview strong.",
-    description: "AI-powered interview coach that adapts to your role and provides personalized feedback to help you ace your next interview.",
+    description: "AI-powered interview coach that adapts to your role and provides personalized feedback using STAR method.",
     features: [
       "Role-specific interview simulation",
       "Real-time feedback and scoring",
       "STAR method coaching",
-      "Resume integration",
+      "10+ job roles supported",
     ],
     href: "/hire-wise",
     gradient: "from-emerald to-cyan",
@@ -73,7 +73,7 @@ export function ModulesSection() {
           Powerful AI Modules
         </h2>
         <p className="text-center text-muted-foreground text-lg mt-4 max-w-2xl mx-auto">
-          Four revolutionary tools designed to transform how you work with AI
+          Powerful tools designed to transform how you work with AI
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">

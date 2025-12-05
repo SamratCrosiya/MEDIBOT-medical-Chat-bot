@@ -9,6 +9,7 @@ import Chat from "./pages/Chat";
 import PromptMirror from "./pages/PromptMirror";
 import ScreenSage from "./pages/ScreenSage";
 import HireWise from "./pages/HireWise";
+import DiscoveryHub from "./pages/DiscoveryHub";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/prompt-mirror" element={<PromptMirror />} />
           <Route path="/screen-sage" element={<ScreenSage />} />
           <Route path="/hire-wise" element={<HireWise />} />
+          <Route path="/discovery-hub" element={<DiscoveryHub />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
