@@ -44,6 +44,66 @@ export type Database = {
         }
         Relationships: []
       }
+      medical_documents: {
+        Row: {
+          content: string
+          created_at: string
+          file_type: string | null
+          filename: string
+          id: string
+          keywords: string[]
+          user_id: string | null
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          file_type?: string | null
+          filename: string
+          id?: string
+          keywords?: string[]
+          user_id?: string | null
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          file_type?: string | null
+          filename?: string
+          id?: string
+          keywords?: string[]
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      medical_knowledge: {
+        Row: {
+          category: string
+          content: string
+          created_at: string
+          id: string
+          keywords: string[]
+          source: string | null
+          title: string
+        }
+        Insert: {
+          category: string
+          content: string
+          created_at?: string
+          id?: string
+          keywords?: string[]
+          source?: string | null
+          title: string
+        }
+        Update: {
+          category?: string
+          content?: string
+          created_at?: string
+          id?: string
+          keywords?: string[]
+          source?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -76,7 +136,25 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      search_medical_knowledge: {
+        Args: { search_query: string }
+        Returns: {
+          category: string
+          content: string
+          id: string
+          relevance: number
+          title: string
+        }[]
+      }
+      search_user_documents: {
+        Args: { search_query: string; user_uuid: string }
+        Returns: {
+          content: string
+          filename: string
+          id: string
+          relevance: number
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
