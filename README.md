@@ -1,52 +1,71 @@
-# MediBot - AI Health Assistant
+# InvoiceIQ - Smart Invoice & Receipt Reader
 
-A full-stack medical chatbot application that serves as an AI health assistant, helping users understand symptoms, simplify medical reports, and provide medication information.
+An AI-powered invoice and receipt reader that transforms unstructured financial documents into organized, categorized entries for small businesses.
 
-## Features
+## 🎯 The Problem
 
-- **AI Symptom Checker** - Analyzes described symptoms and suggests common causes
-- **Medical Report Simplifier** - Translates medical jargon into simple language
-- **Smart Drug Info** - Provides structured medication information including uses, side effects, and warnings
-- **Emergency Detection** - Scans for safety-critical keywords and immediately returns emergency alerts
-- **RAG-Powered Responses** - Uses medical knowledge base for domain-specific answers
-- **Document Upload** - Upload and analyze personal medical documents
+Small businesses waste **5-10 hours monthly** on manual receipt entry, leading to errors, missed tax deductions, and cash flow blindness.
 
-## Tech Stack
+## 💡 The Solution
+
+InvoiceIQ uses AI to automatically extract, categorize, and organize receipt data in seconds.
+
+## ✨ Features
+
+- **AI Receipt Scanner** - Upload photos/PDFs, get structured data
+- **Smart Categorization** - Auto-categorize expenses (Food, Travel, Office, etc.)
+- **Analytics Dashboard** - Visualize spending patterns
+- **Export Ready** - CSV/PDF reports for tax filing
+
+## 🛠️ Tech Stack
 
 - **Frontend**: React, TypeScript, Vite, Tailwind CSS, shadcn-ui
 - **Backend**: Supabase Edge Functions, PostgreSQL
-- **AI**: Lovable AI Gateway (Gemini models)
+- **AI**: Gemini 2.5 Flash (via Lovable AI Gateway)
 
-## Project Structure
+## 🚀 Getting Started
+
+```bash
+# Clone the repository
+git clone <repo-url>
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+## 📁 Project Structure
 
 ```
 src/
 ├── pages/
-│   └── MediBot.tsx          # Main chat interface
+│   ├── Index.tsx          # Landing page
+│   ├── Dashboard.tsx      # Main dashboard
+│   └── Upload.tsx         # Receipt upload
 ├── components/
-│   └── medibot/
-│       ├── DocumentUpload.tsx   # Document upload component
-│       └── RAGIndicator.tsx     # RAG sources display
+│   └── invoice/           # Invoice-related components
 └── integrations/
-    └── supabase/
-        └── client.ts        # Supabase client configuration
+    └── supabase/          # Backend integration
 
 supabase/
 └── functions/
-    └── medibot-chat/
-        └── index.ts         # Backend chat function
+    └── process-receipt/   # AI processing function
 ```
 
-## Getting Started
+## 📖 Documentation
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Start development server: `npm run dev`
+See [PROJECT_DOCS.md](./PROJECT_DOCS.md) for detailed project documentation including:
+- Problem statement
+- Technical architecture
+- Impact analysis
+- Future roadmap
 
-## Author
+## 👨‍💻 Author
 
 Created by me.
 
-## License
+## 📄 License
 
 MIT License
