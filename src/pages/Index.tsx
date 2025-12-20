@@ -1,150 +1,166 @@
 import { Link } from "react-router-dom";
+import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 import { 
-  Receipt, 
-  Sparkles, 
-  PieChart, 
-  FileText, 
-  ArrowRight, 
-  Check,
-  Zap,
-  Shield,
-  Clock
+  Stethoscope, FileText, Pill, Shield, MessageSquare, 
+  ArrowRight, Heart, Brain, Activity, Clock, Users, CheckCircle 
 } from "lucide-react";
 
 const features = [
   {
-    icon: Receipt,
-    title: "Smart Scanning",
-    description: "Upload any receipt - crumpled, faded, or tilted. Our AI handles it all."
-  },
-  {
-    icon: Sparkles,
-    title: "AI Extraction",
-    description: "Automatically extract vendor, date, items, amounts, and tax with 95% accuracy."
-  },
-  {
-    icon: PieChart,
-    title: "Auto-Categorize",
-    description: "Expenses automatically sorted into Food, Travel, Office, and 15+ categories."
+    icon: Stethoscope,
+    title: "AI Symptom Checker",
+    description: "Describe your symptoms naturally and get insights about potential causes and recommended next steps.",
+    color: "from-emerald to-cyan",
   },
   {
     icon: FileText,
-    title: "Export Ready",
-    description: "Generate tax-ready reports in CSV or PDF format with one click."
-  }
+    title: "Report Simplifier",
+    description: "Paste your lab results or medical reports and get them translated into simple, easy-to-understand language.",
+    color: "from-amber to-accent",
+  },
+  {
+    icon: Pill,
+    title: "Smart Drug Info",
+    description: "Get detailed information about medications including uses, side effects, and important warnings.",
+    color: "from-secondary to-primary",
+  },
+  {
+    icon: Shield,
+    title: "Emergency Detection",
+    description: "Automatic detection of emergency symptoms with immediate guidance to seek professional help.",
+    color: "from-destructive to-amber",
+  },
 ];
 
-const benefits = [
-  { icon: Clock, text: "Save 60+ hours per year" },
-  { icon: Zap, text: "Process receipts in seconds" },
-  { icon: Shield, text: "95% accuracy rate" }
+const stats = [
+  { icon: Users, value: "10K+", label: "Users Helped" },
+  { icon: MessageSquare, value: "50K+", label: "Health Queries" },
+  { icon: Clock, value: "24/7", label: "Available" },
+  { icon: Shield, value: "100%", label: "Private & Secure" },
 ];
 
 const Index = () => {
+  const { user } = useAuth();
+
   return (
-    <div className="min-h-screen bg-background">
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center">
-              <Receipt className="w-5 h-5 text-white" />
+    <Layout>
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center py-20 px-4 overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center animate-fade-in-up">
+            {/* Logo */}
+            <div className="inline-flex items-center gap-4 mb-8">
+              <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald to-cyan flex items-center justify-center icon-float shadow-glow">
+                <Stethoscope className="w-10 h-10 text-foreground" />
+              </div>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              InvoiceIQ
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link to="/dashboard">
-              <Button variant="ghost">Dashboard</Button>
-            </Link>
-            <Link to="/upload">
-              <Button className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600">
-                Get Started
-              </Button>
-            </Link>
+
+            {/* Title */}
+            <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-black mb-6">
+              <span className="gradient-text glow-pulse">MediBot</span>
+            </h1>
+
+            {/* Tagline */}
+            <p className="text-primary italic font-semibold text-xl md:text-2xl mb-4">
+              "Your AI Health Assistant"
+            </p>
+
+            {/* Description */}
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
+              Get instant health guidance, understand your symptoms, simplify medical reports, 
+              and learn about medications — all in one place. Powered by advanced AI.
+            </p>
+
+            {/* Feature Pills */}
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
+              {[
+                { icon: Heart, label: "Symptom Analysis" },
+                { icon: FileText, label: "Report Translation" },
+                { icon: Pill, label: "Drug Information" },
+                { icon: Brain, label: "AI-Powered" },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="glass px-4 py-2 rounded-full flex items-center gap-2 text-sm"
+                >
+                  <item.icon className="w-4 h-4 text-emerald" />
+                  <span className="text-muted-foreground">{item.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to={user ? "/chat" : "/auth"}>
+                <Button variant="hero" size="xl" className="group bg-gradient-to-r from-emerald to-cyan">
+                  {user ? "Start Chatting" : "Get Started Free"}
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link to="/about">
+                <Button variant="outline" size="xl">
+                  Learn More
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </nav>
+      </section>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
-        {/* Background Effects */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/20 via-background to-background" />
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-40 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-        
-        <div className="container mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-            <Sparkles className="w-4 h-4 text-emerald-400" />
-            <span className="text-sm text-emerald-400">AI-Powered Receipt Management</span>
+      {/* Features Section */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="font-display text-4xl md:text-5xl font-black gradient-text mb-4">
+              How MediBot Helps You
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Your intelligent health companion that understands, analyzes, and guides you
+            </p>
           </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-foreground">Turn Messy Receipts</span>
-            <br />
-            <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              Into Smart Data
-            </span>
-          </h1>
-          
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Stop wasting hours on manual data entry. Our AI instantly extracts, categorizes, 
-            and organizes your receipts for hassle-free bookkeeping.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link to="/upload">
-              <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-lg px-8 h-14">
-                Start Scanning Free
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <Link to="/dashboard">
-              <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-emerald-500/30 hover:bg-emerald-500/10">
-                View Demo Dashboard
-              </Button>
-            </Link>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-6">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-2 text-muted-foreground">
-                <benefit.icon className="w-5 h-5 text-emerald-400" />
-                <span>{benefit.text}</span>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={feature.title}
+                className="glass rounded-3xl p-8 hover:-translate-y-2 hover:border-emerald/50 transition-all duration-300 animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6`}>
+                  <feature.icon className="w-8 h-8 text-foreground" />
+                </div>
+                <h3 className="font-display text-2xl font-bold mb-3">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Everything You Need for{" "}
-              <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                Smart Bookkeeping
-              </span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              From receipt scanning to tax-ready reports, InvoiceIQ handles your entire expense workflow.
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <div 
-                key={index}
-                className="p-6 rounded-2xl bg-card border border-border hover:border-emerald-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10 group"
+      {/* Stats Section */}
+      <section className="py-20 px-4 bg-gradient-to-b from-transparent via-emerald/5 to-transparent">
+        <div className="container mx-auto max-w-5xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className="text-center animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <feature.icon className="w-6 h-6 text-emerald-400" />
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald to-cyan flex items-center justify-center mx-auto mb-4">
+                  <stat.icon className="w-7 h-7 text-foreground" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm">{feature.description}</p>
+                <p className="font-display text-3xl md:text-4xl font-black gradient-text">{stat.value}</p>
+                <p className="text-muted-foreground text-sm mt-1">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -153,28 +169,28 @@ const Index = () => {
 
       {/* How It Works */}
       <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Three Steps to{" "}
-              <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-                Organized Finances
-              </span>
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="font-display text-4xl md:text-5xl font-black gradient-text mb-4">
+              Simple & Secure
             </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Getting health guidance has never been easier
+            </p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { step: "01", title: "Upload", desc: "Snap a photo or upload your receipt" },
-              { step: "02", title: "Process", desc: "AI extracts and categorizes data instantly" },
-              { step: "03", title: "Organize", desc: "View insights and export reports" }
+              { step: "1", title: "Sign Up", description: "Create your free account in seconds" },
+              { step: "2", title: "Ask Anything", description: "Type your health question or paste reports" },
+              { step: "3", title: "Get Answers", description: "Receive instant, easy-to-understand guidance" },
             ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="text-6xl font-bold bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 bg-clip-text text-transparent mb-4">
+              <div key={item.step} className="text-center animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald to-cyan flex items-center justify-center mx-auto mb-4 font-display text-2xl font-black text-foreground">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-muted-foreground">{item.desc}</p>
+                <h3 className="font-display text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-muted-foreground">{item.description}</p>
               </div>
             ))}
           </div>
@@ -183,42 +199,32 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="relative rounded-3xl bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-emerald-500/20 p-12 text-center overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 to-transparent" />
-            <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready to Simplify Your Bookkeeping?
-              </h2>
-              <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
-                Join thousands of small businesses saving hours every month with InvoiceIQ.
-              </p>
-              <Link to="/upload">
-                <Button size="lg" className="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-lg px-8 h-14">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
+        <div className="container mx-auto max-w-4xl">
+          <div className="glass-strong rounded-3xl p-12 text-center animate-fade-in-up">
+            <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald to-cyan flex items-center justify-center mx-auto mb-6">
+              <Activity className="w-10 h-10 text-foreground" />
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-black mb-4">
+              Ready to Take Control of Your Health?
+            </h2>
+            <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+              Join thousands of users who trust MediBot for quick, reliable health guidance.
+            </p>
+            <Link to={user ? "/chat" : "/auth"}>
+              <Button variant="hero" size="xl" className="bg-gradient-to-r from-emerald to-cyan">
+                {user ? "Open MediBot Chat" : "Start Free Today"}
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+            <div className="flex flex-wrap justify-center gap-6 mt-8 text-sm text-muted-foreground">
+              <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald" /> Free to use</span>
+              <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald" /> No credit card</span>
+              <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald" /> Instant answers</span>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-4 border-t border-border">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center">
-              <Receipt className="w-4 h-4 text-white" />
-            </div>
-            <span className="font-semibold">InvoiceIQ</span>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            Created by me • Build the Future Hackathon
-          </p>
-        </div>
-      </footer>
-    </div>
+    </Layout>
   );
 };
 

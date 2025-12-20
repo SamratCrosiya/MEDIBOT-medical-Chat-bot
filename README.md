@@ -1,71 +1,73 @@
-# InvoiceIQ - Smart Invoice & Receipt Reader
+# Welcome to your Lovable project
 
-An AI-powered invoice and receipt reader that transforms unstructured financial documents into organized, categorized entries for small businesses.
+## Project info
 
-## 🎯 The Problem
+**URL**: https://lovable.dev/projects/3ef14109-e3f5-474d-84b7-1c5b4dbbbdc9
 
-Small businesses waste **5-10 hours monthly** on manual receipt entry, leading to errors, missed tax deductions, and cash flow blindness.
+## How can I edit this code?
 
-## 💡 The Solution
+There are several ways of editing your application.
 
-InvoiceIQ uses AI to automatically extract, categorize, and organize receipt data in seconds.
+**Use Lovable**
 
-## ✨ Features
+Simply visit the [Lovable Project](https://lovable.dev/projects/3ef14109-e3f5-474d-84b7-1c5b4dbbbdc9) and start prompting.
 
-- **AI Receipt Scanner** - Upload photos/PDFs, get structured data
-- **Smart Categorization** - Auto-categorize expenses (Food, Travel, Office, etc.)
-- **Analytics Dashboard** - Visualize spending patterns
-- **Export Ready** - CSV/PDF reports for tax filing
+Changes made via Lovable will be committed automatically to this repo.
 
-## 🛠️ Tech Stack
+**Use your preferred IDE**
 
-- **Frontend**: React, TypeScript, Vite, Tailwind CSS, shadcn-ui
-- **Backend**: Supabase Edge Functions, PostgreSQL
-- **AI**: Gemini 2.5 Flash (via Lovable AI Gateway)
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-## 🚀 Getting Started
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-```bash
-# Clone the repository
-git clone <repo-url>
+Follow these steps:
 
-# Install dependencies
-npm install
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
-# Start development server
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
-## 📁 Project Structure
+**Edit a file directly in GitHub**
 
-```
-src/
-├── pages/
-│   ├── Index.tsx          # Landing page
-│   ├── Dashboard.tsx      # Main dashboard
-│   └── Upload.tsx         # Receipt upload
-├── components/
-│   └── invoice/           # Invoice-related components
-└── integrations/
-    └── supabase/          # Backend integration
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-supabase/
-└── functions/
-    └── process-receipt/   # AI processing function
-```
+**Use GitHub Codespaces**
 
-## 📖 Documentation
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-See [PROJECT_DOCS.md](./PROJECT_DOCS.md) for detailed project documentation including:
-- Problem statement
-- Technical architecture
-- Impact analysis
-- Future roadmap
+## What technologies are used for this project?
 
-## 👨‍💻 Author
+This project is built with:
 
-Created by me.
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
 
-## 📄 License
+## How can I deploy this project?
 
-MIT License
+Simply open [Lovable](https://lovable.dev/projects/3ef14109-e3f5-474d-84b7-1c5b4dbbbdc9) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
